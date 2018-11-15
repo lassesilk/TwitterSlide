@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeController: UITableViewController {
+class HomeController: UITableViewController, UIGestureRecognizerDelegate {
     
     deinit {
         print("HomeController deinit")
@@ -20,7 +20,7 @@ class HomeController: UITableViewController {
         tableView.backgroundColor = .red
         setupNavigationItems()
         setupMenuController()
-        setupPanGesture()
+//        setupPanGesture()
         setupDarkCoverView()
     }
     
@@ -38,7 +38,16 @@ class HomeController: UITableViewController {
     
     fileprivate func setupPanGesture() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        panGesture.delegate = self
         view.addGestureRecognizer(panGesture)
+    }
+    
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        menuController.view.frame = CGRect(x: 0, y: 0, width: 200, height: 500)
     }
     
     @objc func handlePan(gesture: UIPanGestureRecognizer) {
