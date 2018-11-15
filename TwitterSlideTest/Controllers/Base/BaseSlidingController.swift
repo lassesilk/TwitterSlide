@@ -8,24 +8,29 @@
 
 import UIKit
 
+//Bad solution, but using it for now so it is easier to catch memory leaks in view hierarchy debugger
+class RightContainerView: UIView {}
+class MenuContainerView: UIView {}
+class DarkCoverView: UIView {}
+
 class BaseSlidingController: UIViewController {
     
-    let redView: UIView = {
-        let v = UIView()
+    let redView: RightContainerView = {
+        let v = RightContainerView()
         v.backgroundColor = .red
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
     
-    let blueView: UIView = {
-        let v = UIView()
+    let blueView: MenuContainerView = {
+        let v = MenuContainerView()
         v.backgroundColor = .blue
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
     
-    let darkCoverView: UIView = {
-        let v = UIView()
+    let darkCoverView: DarkCoverView = {
+        let v = DarkCoverView()
         v.backgroundColor = UIColor(white: 0, alpha: 0.7)
         v.alpha = 0
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -89,16 +94,48 @@ class BaseSlidingController: UIViewController {
         }
     }
     
-    fileprivate func openMenu() {
+     func openMenu() {
         isMenuOpened = true
         redViewLeadingConstraint.constant = menuWidth
         performAnimations()
     }
     
-    fileprivate func closeMenu() {
+     func closeMenu() {
         redViewLeadingConstraint.constant = 0
         isMenuOpened = false
         performAnimations()
+    }
+    
+    func didSelectMenuItem(indexPath: IndexPath) {
+        
+        performRightViewCleanUp()
+        
+        switch indexPath.row {
+        case 0:
+            print("show homescreen")
+        case 1:
+            let listsController = ListsController()
+            redView.addSubview(listsController.view)
+            addChild(listsController)
+            rightViewController = listsController
+        case 2:
+            let bookmarksController = BookmarksController()
+            redView.addSubview(bookmarksController.view)
+            addChild(bookmarksController)
+            rightViewController = bookmarksController
+        default:
+            print("show moments")
+        }
+        
+        redView.bringSubviewToFront(darkCoverView)
+        closeMenu()
+    }
+    
+    var rightViewController: UIViewController?
+    
+    fileprivate func performRightViewCleanUp() {
+        rightViewController?.view.removeFromSuperview()
+        rightViewController?.removeFromParent()
     }
     
     fileprivate func performAnimations() {
@@ -136,10 +173,13 @@ class BaseSlidingController: UIViewController {
     }
     
     fileprivate func setupViewControllers() {
-        let homeController = HomeController()
+//        let homeController = HomeController()
+        
+        rightViewController = HomeController()
+        
         let menuController = MenuController()
         
-        let homeView = homeController.view!
+        let homeView = rightViewController!.view!
         let menuView = menuController.view!
         
         homeView.translatesAutoresizingMaskIntoConstraints = false
@@ -166,7 +206,7 @@ class BaseSlidingController: UIViewController {
             darkCoverView.trailingAnchor.constraint(equalTo: redView.trailingAnchor)
             ])
         
-        addChild(homeController)
+        addChild(rightViewController!)
         addChild(menuController)
     }
     

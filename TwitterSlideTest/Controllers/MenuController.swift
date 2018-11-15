@@ -8,16 +8,41 @@
 
 import UIKit
 
+struct MenuItem {
+    let icon: UIImage
+    let title: String
+}
+
+extension MenuController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let slidingController = UIApplication.shared.keyWindow?.rootViewController as? BaseSlidingController
+        slidingController?.didSelectMenuItem(indexPath: indexPath)
+        
+    }
+}
+
 class MenuController: UITableViewController {
+    
+    
     
     deinit {
         print("MenuController deinit")
     }
+    
+    let menuItems = [
+        MenuItem(icon: #imageLiteral(resourceName: "profile"), title: "Home"),
+        MenuItem(icon: #imageLiteral(resourceName: "lists"), title: "Lists"),
+        MenuItem(icon: #imageLiteral(resourceName: "bookmarks"), title: "Bookmarks"),
+        MenuItem(icon: #imageLiteral(resourceName: "moments"), title: "Moments")
+
+
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.backgroundColor = .blue
+        tableView.separatorStyle = .none
         
     }
     
@@ -26,19 +51,20 @@ class MenuController: UITableViewController {
         return customHeaderView
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 200
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuItems.count
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cellId")
+        let cell = MenuItemCell(style: .default, reuseIdentifier: "cellId")
         
-        cell.textLabel?.text = "Menu item row: \(indexPath.row)"
+        let menuItem = menuItems[indexPath.row]
+        
+        cell.iconImageView.image = menuItem.icon
+        cell.titleLabel.text = menuItem.title
         
         return cell
     }

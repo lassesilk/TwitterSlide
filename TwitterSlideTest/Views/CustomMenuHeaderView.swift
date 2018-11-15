@@ -9,23 +9,54 @@
 import UIKit
 
 class CustomMenuHeaderView: UIView {
-
+    
+    let nameLabel = UILabel()
+    let statsLabel = UILabel()
+    let userNameLabel = UILabel()
+    let profileImageView = ProfileImageView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = .white
         
-        let nameLabel = UILabel()
+        setupComponentsProps()
+        
+        setupStackView()
+    }
+    
+    fileprivate func setupComponentsProps() {
         nameLabel.text = "Lasse N. Silkoset"
         nameLabel.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
-        
-        let userNameLabel = UILabel()
         userNameLabel.text = "@lassesilk"
-        
-        let statsLabel = UILabel()
         statsLabel.text = "42 Following 7091 Followers"
+        profileImageView.image = #imageLiteral(resourceName: "Lasse")
+        profileImageView.contentMode = .scaleAspectFill
+        profileImageView.layer.cornerRadius = 48 / 2
+        profileImageView.clipsToBounds = true
         
-        let arrangedSubViews = [UIView(), nameLabel, userNameLabel, SpacerView(space: 16), statsLabel]
+        setupAttributedText()
+    }
+    
+    fileprivate func setupAttributedText() {
+        statsLabel.font = UIFont.systemFont(ofSize: 14)
+        
+        let attributedText = NSMutableAttributedString(string: "42 ", attributes: [.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+        attributedText.append(NSAttributedString(string: "Following   ", attributes: [.foregroundColor : UIColor.black]))
+        attributedText.append(NSAttributedString(string: "7091 ", attributes: [.font : UIFont.systemFont(ofSize: 17, weight: .medium)]))
+        attributedText.append(NSAttributedString(string: "Followers", attributes: [.foregroundColor : UIColor.black]))
+        
+        statsLabel.attributedText = attributedText
+    }
+    
+    fileprivate func setupStackView() {
+        let arrangedSubViews = [
+            UIStackView(arrangedSubviews: [profileImageView, UIView()]),
+            nameLabel,
+            userNameLabel,
+            SpacerView(space: 16),
+            statsLabel
+        ]
         let stackView = UIStackView(arrangedSubviews: arrangedSubViews)
         stackView.axis = .vertical
         stackView.spacing = 4
