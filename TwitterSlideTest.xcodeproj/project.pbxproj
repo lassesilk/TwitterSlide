@@ -14,8 +14,12 @@
 		C42D4E90219DEE7700375B7E /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D4E8F219DEE7700375B7E /* MenuItemCell.swift */; };
 		C42D4E92219DFAD400375B7E /* ListsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D4E91219DFAD400375B7E /* ListsController.swift */; };
 		C42D4E94219DFF3D00375B7E /* BookmarksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D4E93219DFF3D00375B7E /* BookmarksController.swift */; };
+		C42D4E96219E127000375B7E /* ChatRoomsMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D4E95219E127000375B7E /* ChatRoomsMenuController.swift */; };
+		C4A97DC521BAD1A100DBD165 /* ChatroomMenuContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A97DC421BAD1A100DBD165 /* ChatroomMenuContainerController.swift */; };
 		C4BF0A26219B54390005FF08 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BF0A25219B54390005FF08 /* MenuController.swift */; };
 		C4BF0A28219B56190005FF08 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BF0A27219B56190005FF08 /* HomeController.swift */; };
+		C4C2CC58219E9AB600E728B4 /* ChatroomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CC57219E9AB600E728B4 /* ChatroomMenuCell.swift */; };
+		C4C2CC5A219E9CCC00E728B4 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CC59219E9CCC00E728B4 /* Extensions+UIView.swift */; };
 		C4E1315A2194D0D200E3F9C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E131592194D0D200E3F9C5 /* AppDelegate.swift */; };
 		C4E1315F2194D0D200E3F9C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E1315D2194D0D200E3F9C5 /* Main.storyboard */; };
 		C4E131612194D0D400E3F9C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E131602194D0D400E3F9C5 /* Assets.xcassets */; };
@@ -30,8 +34,12 @@
 		C42D4E8F219DEE7700375B7E /* MenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 		C42D4E91219DFAD400375B7E /* ListsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsController.swift; sourceTree = "<group>"; };
 		C42D4E93219DFF3D00375B7E /* BookmarksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksController.swift; sourceTree = "<group>"; };
+		C42D4E95219E127000375B7E /* ChatRoomsMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomsMenuController.swift; sourceTree = "<group>"; };
+		C4A97DC421BAD1A100DBD165 /* ChatroomMenuContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomMenuContainerController.swift; sourceTree = "<group>"; };
 		C4BF0A25219B54390005FF08 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		C4BF0A27219B56190005FF08 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		C4C2CC57219E9AB600E728B4 /* ChatroomMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomMenuCell.swift; sourceTree = "<group>"; };
+		C4C2CC59219E9CCC00E728B4 /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
 		C4E131562194D0D200E3F9C5 /* TwitterSlideTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterSlideTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E131592194D0D200E3F9C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4E1315E2194D0D200E3F9C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,6 +74,8 @@
 				C42D4E8B219DE41900375B7E /* SpacerView.swift */,
 				C42D4E8D219DE78900375B7E /* ProfileImageView.swift */,
 				C42D4E8F219DEE7700375B7E /* MenuItemCell.swift */,
+				C4C2CC57219E9AB600E728B4 /* ChatroomMenuCell.swift */,
+				C4C2CC59219E9CCC00E728B4 /* Extensions+UIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -75,9 +85,11 @@
 			children = (
 				C40B5AE3219CBDF40027BC45 /* Base */,
 				C4BF0A25219B54390005FF08 /* MenuController.swift */,
+				C4A97DC421BAD1A100DBD165 /* ChatroomMenuContainerController.swift */,
 				C4BF0A27219B56190005FF08 /* HomeController.swift */,
 				C42D4E91219DFAD400375B7E /* ListsController.swift */,
 				C42D4E93219DFF3D00375B7E /* BookmarksController.swift */,
+				C42D4E95219E127000375B7E /* ChatRoomsMenuController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -186,11 +198,15 @@
 				C4BF0A28219B56190005FF08 /* HomeController.swift in Sources */,
 				C42D4E90219DEE7700375B7E /* MenuItemCell.swift in Sources */,
 				C42D4E8E219DE78900375B7E /* ProfileImageView.swift in Sources */,
+				C4C2CC58219E9AB600E728B4 /* ChatroomMenuCell.swift in Sources */,
 				C4BF0A26219B54390005FF08 /* MenuController.swift in Sources */,
+				C4C2CC5A219E9CCC00E728B4 /* Extensions+UIView.swift in Sources */,
 				C42D4E8C219DE41900375B7E /* SpacerView.swift in Sources */,
+				C42D4E96219E127000375B7E /* ChatRoomsMenuController.swift in Sources */,
 				C4E1315A2194D0D200E3F9C5 /* AppDelegate.swift in Sources */,
 				C42D4E8A219DE05800375B7E /* CustomMenuHeaderView.swift in Sources */,
 				C42D4E92219DFAD400375B7E /* ListsController.swift in Sources */,
+				C4A97DC521BAD1A100DBD165 /* ChatroomMenuContainerController.swift in Sources */,
 				C40B5AE5219CBE110027BC45 /* BaseSlidingController.swift in Sources */,
 				C42D4E94219DFF3D00375B7E /* BookmarksController.swift in Sources */,
 			);

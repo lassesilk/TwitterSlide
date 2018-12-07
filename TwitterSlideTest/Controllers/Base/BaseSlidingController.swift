@@ -104,6 +104,7 @@ class BaseSlidingController: UIViewController {
         redViewLeadingConstraint.constant = menuWidth
         redViewTrailingConstraint.constant = menuWidth
         performAnimations()
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     func closeMenu() {
@@ -111,6 +112,15 @@ class BaseSlidingController: UIViewController {
         redViewTrailingConstraint.constant = 0
         isMenuOpened = false
         performAnimations()
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if isMenuOpened {
+        return .lightContent
+        } else {
+            return .default
+        }
     }
     
     func didSelectMenuItem(indexPath: IndexPath) {
@@ -151,6 +161,7 @@ class BaseSlidingController: UIViewController {
     }
     
     var rightViewController: UIViewController = UINavigationController(rootViewController: HomeController())
+    let menuController = ChatroomMenuContainerController()
     
     fileprivate func performRightViewCleanUp() {
         rightViewController.view.removeFromSuperview()
@@ -197,8 +208,6 @@ class BaseSlidingController: UIViewController {
     }
     
     fileprivate func setupViewControllers() {
-        
-        let menuController = MenuController()
         
         let homeView = rightViewController.view!
         let menuView = menuController.view!
